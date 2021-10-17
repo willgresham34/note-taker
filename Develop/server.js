@@ -2,7 +2,7 @@
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
-const uuid = require('uuid');
+const { uuid } = require('uuid');
 
 //declares port value to deploy to heroku and set the app const to express
 const app = express();
@@ -36,17 +36,22 @@ app.delete('/api/notes/:id', (req, res) => {
     })
 })
 
+//post the new note to the website
 app.post('/api/notes', (req, res) => {
     fs.readFile('db/db.json', (err, data) => {
         if(err) {
             console.error(err)
         }
-        let newNote = `[{"title":"${req.body.title}","text":"${req.body.text}" "id": "${uuid}"}]`
+        let newNote = `[{"title":"${req.body.title}","text":"${req.body.text}" "id": "${uuid.v4()}"}]`
 
-        if (newNote includes('{'))
+        if (!(data.toString()).includes('{')) {
+            newNote += ']'
+        } else {
+            newNote += (data.toString()).replace('[', ',');
+        }
+        fs.writeFile('db/db.json', newNote, (err) => err ? console.error(err) : console.log(`Note saved`))
     })
 })
-
 
 // Shows where website is listed at and gives local link
 app.listen(PORT, () =>
