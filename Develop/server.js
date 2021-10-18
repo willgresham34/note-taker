@@ -2,7 +2,7 @@
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
-const { uuid } = require('uuid');
+const { uuid} = require('uuidv4');
 
 //declares port value to deploy to heroku and set the app const to express
 const app = express();
@@ -42,7 +42,14 @@ app.post('/api/notes', (req, res) => {
         if(err) {
             console.error(err)
         }
-        let newNote = `[{"title":"${req.body.title}","text":"${req.body.text}" "id": "${uuid.v4()}"}]`
+        let newNote =
+ `[    
+    {
+        "title":"${req.body.title}",
+        "text":"${req.body.text}",
+        "id": "${uuid()}"
+    }
+`
 
         if (!(data.toString()).includes('{')) {
             newNote += ']'
