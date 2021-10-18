@@ -3,21 +3,24 @@
 [![License](https://img.shields.io/badge/License-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 
 ## Description
-An online notebook that allows you to take notes online and save and repopen them.
+An online notebook that allows you to take notes online and save and re-open them.
 
 ## Table Of Contents
 * [Install](#installs)
 * [Usage](#usage)
+* [Heroku Link](#link)
 * [license](#license)
 * [Contributing](#contributing)
 * [Test](#test)
 * [Questions](#questions)
 
 ## Installation
-Node and Express
+Node, Express, and UUIDv4
 
 ## Usage
-![header image](./images/)
+![header image](./public/images/ss.png)
+
+## Link 
 
 ## License 
 [![License](https://img.shields.io/badge/License-MIT-brightgreen)](https://opensource.org/licenses/MIT)
